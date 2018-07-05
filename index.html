@@ -32,7 +32,8 @@
             padding: 0;
         }
     </style>
-    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" 
+    integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="container">
@@ -48,6 +49,7 @@
                         <li><label><input type="radio" name="fontname" value="georgia"> Georgia</label></li>
                         <li><label><input type="radio" name="fontname" value="times" checked> Times New Roman</label></li>
                         <li><label><input type="radio" name="fontname" value="verdana"> Verdana</label></li>
+                        <li><label><input type="radio" name="fontname" value="impact"> Impact</label></li>
                     </ul>
                 </div>
                 <div class="control">
@@ -71,7 +73,39 @@
         
     </div>
     <script>
-        // JavaScript goes here.
+        $(document).ready(function() {
+            let canvas = $('#canvas');
+
+            $('input[type=radio][name=fontname]').change(function(e) {
+                canvas.css('font-family', e.target.value);
+            })
+            $('#textcolor').keyup(function(e) {
+                canvas.css('color', e.target.value);
+            });
+            
+            $('#bgcolor').keyup(function(e) {
+                canvas.css('background-color', e.target.value);
+            });
+            $('#textsize').keyup(function(e) {
+                console.log(e.target.value);
+                canvas.css('font-size', e.target.value + 'px');
+            });
+            $('#lineheight').keyup(function(e) {
+                console.log(e.target.value);
+                canvas.css('line-height', e.target.value + 'px');
+            });
+            $('#textpadding').keyup(function(e) {
+                console.log(e.target.value);
+                canvas.css('padding', e.target.value + 'px');
+            });
+        console.log(canvas.css([ "font-family", "color", "background-color", "font-size", "line-height" ]));
+        var css = canvas.css([ "font-family", "color", "background-color", "font-size", "line-height" ]);
+        
+        
+        
+        // $('body').append("<p>"+css['font-family']+"</p>");
+        });
+
     </script>
 </body>
 </html>
